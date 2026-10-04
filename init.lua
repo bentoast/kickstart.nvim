@@ -594,7 +594,25 @@ require('lazy').setup({
           },
         },
         omnisharp = {},
-        pylsp = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              configurationSources = { 'flake8' },
+              plugins = {
+                flake8 = {
+                  enabled = true,
+                  ignore = { 'E501', 'W503' },
+                  maxLineLength = 200,
+                },
+                pycodestyle = {
+                  enabled = true,
+                  ignore = { 'E501', 'W503' },
+                  maxLineLength = 200,
+                },
+              },
+            },
+          },
+        },
         r_language_server = {},
         sqlls = {},
         ts_ls = {
@@ -862,7 +880,7 @@ require('lazy').setup({
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    main = 'nvim-treesitter.config', -- Sets main module to use for opts
+    main = 'nvim-treesitter.configs', -- Sets main module to use for opts
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
     opts = {
       ensure_installed = {
